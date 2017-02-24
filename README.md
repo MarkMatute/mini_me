@@ -83,22 +83,36 @@ class Test_m extends Model{
 </p>
 <h4>Sample</h4>
 <pre>
-class Database {
-	
-	// MySQL Databases
-	public $mysql;
+<?php
 
-	/**
-	 * MySQL Connection
-	 */
-	public function mysql(){
-		//$this->mysql = new PDO("mysql:host=localhost;dbname=dbname", 'root','pass');
-	    //$this->mysql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		return $this->mysql;
-	}
+# Singleton Database Class
+# Uses PDO Driver
+
+class Database {
+
+	# Instance of THIS class
+	private $_instance = NULL;
+
+	# Database Connection
+	private $_conn     = NULL;
+
+	# Constructor
+	public function __construct(){
+		$this->_conn = new PDO('mysql:host=localhost;dbname=tester','root','');
+	}	
+
+	# Get Singleton Instance
+	public static function getInstance(){
+		if(!self::$_instance){
+			self::$_instance = new self();
+		}
+		return self::$_instance;
+	}		
+
+	# Hide Clone
+	private function __clone(){}
 
 }
-/* EOF */
 </pre>
 <p>
   And you can access the database object via db object on Models, See <a href="#modelSample">model</a> example.
