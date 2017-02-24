@@ -12,6 +12,13 @@ class DefaultCtrl extends Controller{
 	}
 
 	/**
+	 * Load Home View
+	 */
+	public function index(){
+		echo 'Mini PHP Framework';
+	}
+
+	/**
 	 * Returns Error 404
 	 * @return JSON encoded array 404
 	 */

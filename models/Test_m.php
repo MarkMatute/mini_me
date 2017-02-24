@@ -5,14 +5,11 @@
  */
 class Test_m extends Model{
 
-	private $mysql; 
-
 	public function __construct(){	
 		parent::__construct();
-		$this->mysql = $this->db->mysql();
 	}
-
-	public function get_data(){
+	
+	public static function foo(){
 		return array(
 			'foo' => 'bar'
 		);

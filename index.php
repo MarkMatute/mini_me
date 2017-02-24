@@ -1,26 +1,26 @@
 <?php
 header("Access-Control-Allow-Origin: *");
+session_start();
+
 /**
  * Require Core Files
  */
 require_once 'Config.php';
 require_once 'core/Controller.php';
 require_once 'core/Model.php';
-require_once 'core/Database.php';
 
 /**
  * Prepare Route 
  */
-if(isset($_GET['ctrl']) && isset($_GET['act'])){
+if(isset($_GET['ctrl'])){
 
 	$controller = $_GET['ctrl'];
-	$action     = $_GET['act'];
+	$action     = isset($_GET['act'])?$_GET['act']:'index';
 
 }else{
 
 	$controller = "defaultCtrl";
-	$action     = "show_404";
-
+	$action     = "index";
 }
 
 /**
@@ -45,5 +45,3 @@ function call($controller,$action){
 }
 
 call($controller,$action);
-
-/* EOF */

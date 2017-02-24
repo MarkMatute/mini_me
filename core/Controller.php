@@ -22,6 +22,7 @@ class Controller {
 	 * @return [string]       [json_encoded value]
 	 */
 	public function return_json(){
+		header('Content-type: application/json');
 		echo json_encode($this->response);
 	}
 }
